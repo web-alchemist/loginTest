@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.time.Duration;
 
@@ -18,7 +19,9 @@ public class LoginSuccess {
   JavascriptExecutor js;
   @Before
   public void setUp() throws Exception {
-    System.setProperty("webdriver.chrome.driver", ""); //Add compatible chrome driver to run tests successfully
+//    ChromeOptions options = new ChromeOptions();
+//    options.addArguments("--remote-allow-origins=*");
+    System.setProperty("webdriver.chrome.driver", "//Users/amadoutaal/Downloads/chromedriver-mac-arm64/chromedriver"); //Add compatible chrome driver to run tests successfully
     driver = new ChromeDriver();
     baseUrl = "https://www.google.com/";
     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
