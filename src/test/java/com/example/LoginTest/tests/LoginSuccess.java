@@ -19,9 +19,7 @@ public class LoginSuccess {
   JavascriptExecutor js;
   @Before
   public void setUp() throws Exception {
-//    ChromeOptions options = new ChromeOptions();
-//    options.addArguments("--remote-allow-origins=*");
-    System.setProperty("webdriver.chrome.driver", "//Users/amadoutaal/Downloads/chromedriver-mac-arm64/chromedriver"); //Add compatible chrome driver to run tests successfully
+    System.setProperty("webdriver.chrome.driver", "//Users/amadoutaal/Downloads/chromedriver-mac-arm64/chromedriver");
     driver = new ChromeDriver();
     baseUrl = "https://www.google.com/";
     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
@@ -29,16 +27,17 @@ public class LoginSuccess {
   }
 
   @Test
-  public void testLoginSuccess() throws Exception {
+  public void testPass() throws Exception {
     driver.get("https://letsusedata.com/index.html");
     driver.findElement(By.id("txtUser")).click();
     driver.findElement(By.id("txtUser")).clear();
     driver.findElement(By.id("txtUser")).sendKeys("s-amadou.taal@lwtech.edu");
-    driver.findElement(By.id("txtPassword")).click();
     driver.findElement(By.id("txtPassword")).clear();
     driver.findElement(By.id("txtPassword")).sendKeys("vMjpoLD{6;");
     driver.findElement(By.id("javascriptLogin")).click();
     driver.get("https://letsusedata.com/CourseSelection.html");
+    driver.get("https://letsusedata.com/CourseObjectives.html?&courseInstanceId=276");
+    assertTrue(driver.getCurrentUrl().matches("^https://letsusedata\\.com/CourseObjectives\\.html\\?&courseInstanceId=276$"));
   }
 
   @After

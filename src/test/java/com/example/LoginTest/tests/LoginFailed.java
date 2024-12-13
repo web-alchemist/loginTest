@@ -19,8 +19,7 @@ public class LoginFailed {
   JavascriptExecutor js;
   @Before
   public void setUp() throws Exception {
-
-    System.setProperty("webdriver.chrome.driver", "/Users/amadoutaal/Downloads/chromedriver-mac-arm64/chromedriver"); //Add compatible chrome driver to run tests successfully
+    System.setProperty("webdriver.chrome.driver", "//Users/amadoutaal/Downloads/chromedriver-mac-arm64/chromedriver");
     driver = new ChromeDriver();
     baseUrl = "https://www.google.com/";
     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
@@ -28,17 +27,18 @@ public class LoginFailed {
   }
 
   @Test
-  public void testLoginFailed() throws Exception {
+  public void testFail() throws Exception {
     driver.get("https://letsusedata.com/index.html");
-    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='user login'])[1]/following::div[2]")).click();
     driver.findElement(By.id("txtUser")).click();
     driver.findElement(By.id("txtUser")).clear();
     driver.findElement(By.id("txtUser")).sendKeys("s-amadou.taal@lwtech.edu");
-    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Remember username'])[1]/following::div[2]")).click();
-    driver.findElement(By.id("txtPassword")).click();
     driver.findElement(By.id("txtPassword")).clear();
-    driver.findElement(By.id("txtPassword")).sendKeys("password1234");
+    driver.findElement(By.id("txtPassword")).sendKeys("vMjpoLD{6;");
+    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Theme'])[1]/following::div[7]")).click();
+    driver.findElement(By.id("txtPassword")).clear();
+    driver.findElement(By.id("txtPassword")).sendKeys("password");
     driver.findElement(By.id("javascriptLogin")).click();
+    driver.findElement(By.xpath("//span[@id='lblMessage']")).getText();//this tests if there is a span element with the value "Password was incorrect"
   }
 
   @After
